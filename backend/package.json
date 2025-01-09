@@ -12,6 +12,9 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.21.2",
-    "nodemon": "^3.1.9"
+    "nodemon": "^3.1.9",
+    "helmet":"^8.0.0",
+    "cors": "^2.8.5",
+    "morgan": "^1.10.0"
   }
 }
