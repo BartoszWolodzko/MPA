@@ -1,0 +1,61 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  user_id      Int            @id @default(autoincrement())
+  username     String
+  passwordHash String
+  created_at   DateTime       @default(now())
+  User_Product User_Product[]
+}
+
+model Company {
+  company_id Int    @id @default(autoincrement())
+  name       String
+
+  Products Product[]
+}
+
+model Category {
+  category_id Int    @id @default(autoincrement())
+  name        String
+
+  parentCategory   Category?          @relation("ParentChild", fields: [parentCategoryId], references: [category_id])
+  parentCategoryId Int? // Foreign key to parent category
+  subcategories    Category[]         @relation("ParentChild")
+  Category_Product Category_Product[]
+}
+
+model Product {
+  product_id Int @id @default(autoincrement())
+  name String
+  description String
+
+  company           Company            @relation(fields: [companyCompany_id], references: [company_id])
+  companyCompany_id Int
+  User_Product      User_Product[]
+  Category_Product  Category_Product[]
+}
+
+model User_Product {
+  id                 Int      @id @default(autoincrement())
+  user_id            User     @relation(fields: [userUser_id], references: [user_id])
+  product_id         Product  @relation(fields: [productsProduct_id], references: [product_id])
+  created_at         DateTime @default(now())
+  userUser_id        Int
+  productsProduct_id Int
+}
+
+model Category_Product {
+  id                  Int      @id @default(autoincrement())
+  category_id         Category @relation(fields: [categoryCategory_id], references: [category_id])
+  product_id          Product  @relation(fields: [productProduct_id], references: [product_id])
+  categoryCategory_id Int
+  productProduct_id   Int
+}
