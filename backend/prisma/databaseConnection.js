@@ -1,14 +1,14 @@
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from '@prisma/client'
 
-let prisma;
+let prisma
 
 export function getPrismaClient() {
-  if (!prisma) {
-    prisma = new PrismaClient();
-    console.log('New PrismaClient instance created');
-  } else {
-    console.log('Reusing existing PrismaClient instance');
-  }
+    if (!prisma) {
+        prisma = new PrismaClient()
+        console.log('New PrismaClient instance created')
+    } else {
+        console.log('Reusing existing PrismaClient instance')
+    }
 
-  return prisma;
+    return prisma
 }
