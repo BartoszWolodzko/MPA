@@ -1,20 +1,20 @@
 import { getPrismaClient } from '../prisma/databaseConnection.js'
 
-export async function getAllCompanies() {
+export async function getAllCompaniesFromDB() {
     const prisma = getPrismaClient()
     return prisma.company.findMany()
 }
 
-export async function getCompanyById(id) {
+export async function getCompanyByIdFromDB(id) {
     const prisma = getPrismaClient()
     return prisma.company.findUnique({
         where: {
-            company_id: Number(id),
+            id: Number(id),
         },
     })
 }
 
-export async function createCompany(newCompany) {
+export async function createCompanyInDB(newCompany) {
     const prisma = getPrismaClient()
     return prisma.company.create({
         data: {
@@ -23,11 +23,11 @@ export async function createCompany(newCompany) {
     })
 }
 
-export async function updateCompany(newCompany) {
+export async function updateCompanyInDB(newCompany) {
     const prisma = getPrismaClient()
     return prisma.company.update({
         where: {
-            company_id: Number(newCompany.id),
+            id: Number(newCompany.id),
         },
         data: {
             ...newCompany,
@@ -35,11 +35,11 @@ export async function updateCompany(newCompany) {
     })
 }
 
-export async function deleteCompany(id) {
+export async function deleteCompanyFromDB(id) {
     const prisma = getPrismaClient()
     return prisma.company.delete({
         where: {
-            company_id: Number(id),
+            id: Number(id),
         },
     })
 }

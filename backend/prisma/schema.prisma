@@ -16,7 +16,7 @@ model User {
 }
 
 model Company {
-  company_id Int    @id @default(autoincrement())
+  id Int    @id @default(autoincrement())
   name       String
 
   Products Product[]
@@ -37,7 +37,7 @@ model Product {
   name String
   description String
 
-  company           Company            @relation(fields: [companyCompany_id], references: [company_id])
+  company           Company            @relation(fields: [companyCompany_id], references: [id])
   companyCompany_id Int
   User_Product      User_Product[]
   Category_Product  Category_Product[]

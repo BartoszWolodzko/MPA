@@ -13,6 +13,15 @@ app.use(cors())
 app.use(morgan('dev'))
 app.use(express.json())
 
+// Global error handler
+app.use((err, req, res, next) => {
+    if (err instanceof HttpError) {
+        return res.status(err.statusCode).json({ error: err.message })
+    }
+
+    return res.status(500).json({ error: 'Internal Server Error' })
+})
+
 app.get('/', (req, res) => {
     res.send('Hello World!')
 })
