@@ -23,8 +23,8 @@ model Company {
 }
 
 model Category {
-  id               Int    @id @default(autoincrement())
-  name             String
+  id               Int  @id @default(autoincrement())
+  name             Json
   parentCategoryId Int?
 
   parentCategory   Category?          @relation("ParentChild", fields: [parentCategoryId], references: [id])

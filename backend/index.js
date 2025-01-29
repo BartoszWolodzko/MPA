@@ -3,9 +3,8 @@ import helmet from 'helmet'
 import cors from 'cors'
 import morgan from 'morgan'
 import configuration from './configuration.js'
-import productsRoute from './products/productsRoute.js'
-import productRoute from './product/productRoute.js'
 import companyRoute from './company/companyRoute.js'
+import categoryRoute from './category/categoryRoute.js'
 
 const app = express()
 app.use(helmet())
@@ -26,9 +25,8 @@ app.get('/', (req, res) => {
     res.send('Hello World!')
 })
 
-app.use('/products', productsRoute)
-app.use('/product', productRoute)
 app.use('/company', companyRoute)
+app.use('/category', categoryRoute)
 
 app.listen(configuration.PORT, () => {
     console.log(`App started on port ${configuration.PORT}`)
