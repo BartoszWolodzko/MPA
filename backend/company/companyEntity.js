@@ -1,7 +1,10 @@
+import * as languages from '../language-codes.json' with { type: 'json' }
+
 export class CompanyEntity {
     constructor(data) {
         this.id = Number(data.id)
         this.name = data.name
+        this.created_at = data.created_at
     }
 
     getName() {
@@ -13,8 +16,14 @@ export class CompanyEntity {
     }
 
     validate() {
-        if (this.name === '') {
+        if (!typeof this.name === 'JSON') {
             return false
+        }
+
+        for (let key in this.name) {
+            if (!Object.keys(languages.default).includes(key)) {
+                return false
+            }
         }
 
         return true

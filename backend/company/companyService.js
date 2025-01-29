@@ -31,7 +31,7 @@ export async function createCompany(data) {
             throw new BadRequestError('Invalid company data')
         }
 
-        const result = await createCompanyInDB(newCompany)
+        const result = await createCompanyInDB(newCompany.toORMFriendly())
         return new CompanyEntity(result)
     } catch (error) {
         console.error(error)
@@ -43,7 +43,12 @@ export async function updateCompany(id, companyData) {
     if (!id || !companyData)
         throw new BadRequestError('Please provide an ID and company data')
 
-    const updatedCompany = new CompanyEntity({ id, ...companyData })
+    const oldCompany = await getCompanyByIdFromDB(id)
+    if (!oldCompany) throw new NotFoundError(`No company found with ID ${id}`)
+
+    const updatedData = { ...oldCompany, ...companyData }
+
+    const updatedCompany = new CompanyEntity({ id, ...updatedData })
     if (!updatedCompany.validate()) {
         throw new BadRequestError('Invalid company data')
     }
