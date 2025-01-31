@@ -1,0 +1,11 @@
+{
+	"Layout": {
+		"Header": "Header",
+		"Footer": "Footer",
+		"MainContent": "Main Content"
+	},
+	"MainPage": {
+		"Title": "Main Page Title",
+		"Description": "Main Page Description"
+	}
+}

@@ -1,0 +1,11 @@
+{
+	"Layout": {
+		"Header": "Nagłówek",
+		"Footer": "Stopka",
+		"MainContent": "Główna zawartość"
+	},
+	"MainPage": {
+		"Title": "Tytuł strony",
+		"Description": "Opis strony"
+	}
+}
