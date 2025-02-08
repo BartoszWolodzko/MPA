@@ -19,7 +19,8 @@
         "helmet": "^8.0.0",
         "cors": "^2.8.5",
         "morgan": "^1.10.0",
-        "@prisma/client": "^6.2.1"
+        "@prisma/client": "^6.2.1",
+        "sharedModules": "file:../sharedModules"
     },
     "devDependencies": {
         "prisma": "^6.2.1",

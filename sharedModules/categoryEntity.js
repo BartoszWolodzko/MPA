@@ -1,4 +1,4 @@
-import * as languages from '../language-codes.json' with { type: 'json' }
+import * as languages from '../backend/language-codes.json' with { type: 'json' }
 
 export class CategoryEntity {
     constructor(data) {

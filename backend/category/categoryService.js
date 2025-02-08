@@ -8,7 +8,7 @@ import {
     getPrimeCategoriesFromDB,
     updateCategoryInDB,
 } from './categoryDB.js'
-import { CategoryEntity } from './categoryEntity.js'
+import { CategoryEntity } from 'sharedModules'
 
 export async function getAllCategories() {
     const categories = await getAllCategoriesFromDB()

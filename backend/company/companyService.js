@@ -6,7 +6,7 @@ import {
     getCompanyByIdFromDB,
     updateCompanyInDB,
 } from './companyDB.js'
-import { CompanyEntity } from './companyEntity.js'
+import { CompanyEntity } from 'sharedModules'
 
 export async function getAllCompanies() {
     const companies = await getAllCompaniesFromDB()
